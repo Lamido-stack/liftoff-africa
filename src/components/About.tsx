@@ -3,7 +3,8 @@ import React from 'react'
 const About: React.FC = () => {
   return (
     <section id="about" className="section about-section">
-      <div className="container">        <h2 className="section-title">About Liftoff Africa</h2>
+      <div className="container">
+        <h2 className="section-title">About Liftoff Africa</h2>
         <div className="about-content">
           <div className="about-text">
             <p>
@@ -12,24 +13,23 @@ const About: React.FC = () => {
               We believe that every child has the potential to reach for the stars, and we're 
               here to provide the tools, knowledge, and inspiration they need.
             </p>
-            <br />            <p>
+            <p>
               Through hands-on activities, interactive workshops, and immersive experiences, 
               we bring the wonders of space exploration directly to students across Africa. 
               Our programs are designed to spark curiosity, develop critical thinking skills, 
               and encourage the next generation of African scientists, engineers, and space explorers.
             </p>
-            <br />
             <p>
               From building model rockets to understanding planetary science, from coding 
               space missions to exploring the possibilities of life beyond Earth, we make 
               learning about space an adventure that African students will never forget.
-            </p>
-          </div>
+            </p>          </div>
           <div className="stats-grid">
             <div className="stat-card">
               <div className="stat-number">10,000+</div>
               <div className="stat-label">Students Reached</div>
-            </div>            <div className="stat-card">
+            </div>
+            <div className="stat-card">
               <div className="stat-number">150+</div>
               <div className="stat-label">African Schools Partnered</div>
             </div>

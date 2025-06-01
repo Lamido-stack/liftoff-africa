@@ -83,17 +83,17 @@ const Contact: React.FC = () => {
             
             <button type="submit" className="submit-button">
               Send Message
-            </button>
-          </form>
+            </button>          </form>
           
-          <div className="contact-info">            <div className="contact-item">
+          <div className="contact-info">
+            <div className="contact-item">
               <span className="contact-icon">📧</span>
               <div>
                 <strong>Email</strong>
-                <p>info@liftoffafrica.org</p>
-              </div>
+                <p>info@liftoffafrica.org</p>              </div>
             </div>
-              <div className="contact-item">
+            
+            <div className="contact-item">
               <span className="contact-icon">📞</span>
               <div>
                 <strong>Phone</strong>
