@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Navigation: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+const Navigation: React.FC = () => {  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -11,6 +10,31 @@ const Navigation: React.FC = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    // Prevent body scroll when mobile menu is open
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    // Cleanup function to reset overflow when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset'
+    }  }, [isMenuOpen])
+
+  useEffect(() => {
+    // Close mobile menu when escape key is pressed
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [isMenuOpen])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -26,8 +50,7 @@ const Navigation: React.FC = () => {
 
   return (
     <nav className={`navigation ${scrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container">
-        <a 
+      <div className="nav-container">        <a 
           href="#home" 
           className="logo"
           onClick={(e) => {
@@ -35,7 +58,7 @@ const Navigation: React.FC = () => {
             scrollToSection('home')
           }}
         >
-          🌍🚀 Liftoff Africa
+          🚀 Liftoff Africa
         </a>
         
         <button 
@@ -48,15 +71,16 @@ const Navigation: React.FC = () => {
             <span></span>
             <span></span>
             <span></span>
-          </span>
-        </button>
-
-        <ul className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
-          <li>
-            <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home') }}>
-              <span className="nav-icon">🏠</span> Home
-            </a>
-          </li>
+          </span>        </button>        <ul className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
+          {isMenuOpen && (
+            <button 
+              className="mobile-menu-close"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close navigation menu"
+            >
+              ✕
+            </button>
+          )}
           <li>
             <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about') }}>
               <span className="nav-icon">🌟</span> About

@@ -39,7 +39,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 10000;
   background: rgba(10, 10, 35, 0.95);
   backdrop-filter: blur(10px);
   padding: 1rem 2rem;
@@ -59,6 +59,7 @@
   font-weight: 700;
   color: #64ffda;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -75,6 +76,7 @@
   font-weight: 500;
   transition: color 0.3s ease;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -435,9 +437,11 @@
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(10, 10, 35, 0.98);
   backdrop-filter: blur(10px);
-  z-index: 1000;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -445,6 +449,9 @@
   gap: 2rem;
   transform: translateX(0);
   transition: transform 0.3s ease;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links.mobile-open a {
@@ -468,6 +475,32 @@
 
 .nav-icon {
   font-size: 1.2rem;
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  z-index: 10001;
+}
+
+.mobile-menu-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #64ffda;
+  transform: scale(1.1);
 }
 
 .mobile-menu-button {
@@ -525,14 +558,16 @@
 }
 
 .mobile-nav-links a:hover {
-  background-color: rgba(100, 255, 218, 0.1);
-  color: #64ffda;
-  transform: scale(1.05);
+  background-color: rgba(100, 255, 218, 0.1);  color: #64ffda;  transform: scale(1.05);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Navigation Mobile Breakpoint at 850px */
+@media (max-width: 850px) {
   /* Navigation */
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
   .mobile-menu-button {
     display: block;
   }
@@ -548,7 +583,38 @@
   .logo {
     font-size: 1.5rem;
   }
+}
 
+/* About Section Mobile Breakpoint at 992px */
+@media (max-width: 992px) {
+  /* About Section - Stack content vertically */
+  .about-content {
+    grid-template-columns: 1fr !important; /* Force single column */
+    gap: 2.5rem;
+    text-align: left; /* Better readability for educational content */
+  }
+  
+  .about-text {
+    order: 1; /* Text content first */
+    margin-bottom: 2rem;
+  }
+    .stats-grid {
+    order: 2; /* Stats grid second */
+    grid-template-columns: repeat(2, 1fr); /* Keep side by side */
+    gap: 1.5rem;
+  }
+  
+  .stat-item {
+    padding: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   /* Hero Section - Keep rocket as background */
   .hero-section {
     position: relative;
@@ -801,27 +867,8 @@
   }
 }
 
-/* Enhanced Mobile Responsive Fixes for About and Contact Sections */
+/* Enhanced Mobile Responsive Fixes for Contact Section */
 @media (max-width: 768px) {
-  /* About Section - Stack content vertically */
-  .about-content {
-    grid-template-columns: 1fr !important; /* Force single column */
-    gap: 2.5rem;
-    text-align: left; /* Better readability for educational content */
-  }
-  
-  .about-text {
-    order: 1; /* Text content first */
-    margin-bottom: 2rem;
-  }
-  
-  .stats-grid {
-    order: 2; /* Stats grid second */
-    grid-template-columns: repeat(2, 1fr); /* Keep 2x2 grid for stats */
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
   /* Contact Section - Stack form and info vertically */
   .contact-content {
     grid-template-columns: 1fr !important; /* Force single column */
