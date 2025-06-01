@@ -380,56 +380,423 @@
   color: #64ffda;
 }
 
+/* Mobile Navigation */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 24px;
+  height: 18px;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.nav-links.mobile-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 35, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-links.mobile-open a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links.mobile-open a:hover {
+  background-color: rgba(100, 255, 218, 0.1);
+  color: #64ffda;
+  transform: scale(1.05);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 35, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  transform: translateX(0);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+}
+
+.mobile-nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-links a:hover {
+  background-color: rgba(100, 255, 218, 0.1);
+  color: #64ffda;
+  transform: scale(1.05);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .hero-content {
-    width: 100%;
-    padding: 2rem;
-  }
-  
-  .rocket-canvas {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .hero-content {
-    padding: 0 1rem;
-    max-width: 90%;
-  }
-  
-  .cta-button {
-    padding: 0.9rem 2rem;
-    font-size: 1rem;
+  /* Navigation */
+  .mobile-menu-button {
+    display: block;
   }
   
   .nav-links {
     display: none;
   }
   
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .nav-links {
-    gap: 1.5rem;
+  .navigation {
+    padding: 1rem;
   }
   
   .logo {
     font-size: 1.5rem;
+  }
+
+  /* Hero Section - Keep rocket as background */
+  .hero-section {
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 1rem 2rem;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 10; /* High z-index to stay above rocket */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    order: unset; /* Remove flexbox order */
+    margin-top: 10vh; /* Center vertically */
+    
+    /* Add subtle backdrop for better text readability */
+    background: rgba(10, 10, 35, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+  }
+  
+  .rocket-canvas {
+    position: absolute !important; /* Force absolute positioning */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Ensure it stays behind content */
+    order: unset; /* Remove flexbox order */
+    margin-bottom: 0; /* Remove margin */
+  }  
+  /* Enhance text visibility over the 3D background */
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .cta-button {
+    position: relative;
+    z-index: 11;
+    padding: 0.8rem 1.8rem;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    box-shadow: 0 4px 20px rgba(100, 255, 218, 0.3);
+    width: auto;
+    min-width: 200px;
+  }
+
+  /* Sections */
+  .section {
+    padding: 3rem 1rem;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .stat-item {
+    padding: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  /* Programs Grid */
+  .programs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .program-card {
+    padding: 1.5rem;
+  }
+
+  /* Events Grid */
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .event-card {
+    padding: 1.5rem;
+  }
+
+  /* Contact Form */
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contact-form {
+    order: 2;
+  }
+  
+  .contact-info {
+    order: 1;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-input,
+  .form-textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Touch-friendly interactions */
+  .cta-button,
+  .submit-button,
+  .mobile-nav-links a {
+    min-height: 44px; /* iOS minimum touch target */
+    touch-action: manipulation;
+  }
+  
+  /* Prevent horizontal scroll */
+  .hero-content,
+  .container {
+    overflow-x: hidden;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 1.5rem 1rem;
+    margin-top: 8vh;
+    background: rgba(10, 10, 35, 0.4); /* Slightly more opaque */
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    min-width: 180px;
+  }
+  
+  .rocket-canvas {
+    height: 100vh; /* Full height */
+  }
+  
+  .navigation {
+    padding: 0.5rem 1rem;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-content {
+    margin-top: 5vh;
+    padding: 1rem;
+    max-width: 500px;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Optimize 3D canvas performance on mobile */
+  .rocket-canvas canvas {
+    /* Enable hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    
+    /* Optimize rendering */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    
+    /* Reduce visual complexity on very small screens */
+    filter: brightness(0.9);
+  }
+  
+  /* Improve text readability with enhanced contrast */
+  .hero-content {
+    /* Add subtle border for better definition */
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    
+    /* Ensure content is always above 3D background */
+    position: relative;
+    isolation: isolate;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .rocket-canvas * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

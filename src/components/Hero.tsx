@@ -7,11 +7,12 @@ const Hero: React.FC = () => {
       aboutSection.scrollIntoView({ behavior: 'smooth' })
     }
   }
-
   return (
-    <div className="hero-content">      <h1 className="hero-title">
+    <div className="hero-content">
+      <h1 className="hero-title">
         Inspiring Africa's Next Generation of Space Explorers
-      </h1><p className="hero-subtitle">
+      </h1>
+      <p className="hero-subtitle">
         Join Liftoff Africa on an incredible journey through the cosmos! Our space education programs 
         ignite curiosity, foster scientific thinking, and prepare young minds across Africa for the 
         challenges of tomorrow's space exploration.
