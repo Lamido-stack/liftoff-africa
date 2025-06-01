@@ -79,6 +79,43 @@ src/
 └── main.tsx            # App entry point
 ```
 
+## 🚀 Deployment to GitHub Pages
+
+This website is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+### Quick Deploy Steps
+
+1. **Create GitHub repository** and push your code
+2. **Update repository name** in `vite.config.ts`:
+   ```typescript
+   base: '/your-repository-name/', // Replace with actual repo name
+   ```
+3. **Enable GitHub Pages** in repository settings (Source: GitHub Actions)
+4. **Push to main branch** - automatic deployment starts!
+
+Your live site: `https://your-username.github.io/your-repository-name/`
+
+📖 **Complete deployment guide**: [DEPLOYMENT.md](DEPLOYMENT.md)
+
+### ✅ Deployment Features
+
+- **Automatic builds** on every push to main branch
+- **Three.js 3D animations** work perfectly on GitHub Pages
+- **Responsive design** preserved across all devices
+- **Educational accessibility** features maintained
+- **Fast global CDN** delivery
+- **Free HTTPS** SSL certificate
+- **Professional domain** options available
+
+### 🌍 Live Website Features
+
+Once deployed, your Liftoff Africa website showcases:
+- Interactive 3D rocket that engages young learners
+- Comprehensive space education programs for African youth
+- Modern, accessible design optimized for educational use
+- Contact information for partnerships and inquiries
+- Mobile-responsive experience for students across the continent
+
 ## Customization
 
 The website is designed to be easily customizable:
